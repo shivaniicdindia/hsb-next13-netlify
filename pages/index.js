@@ -9,7 +9,7 @@ export default function Home({ blogs }) {
     <Head>
       <title>Demo Blog</title>
     </Head>
-    <h1 className={styles['header']}>Welcome to my blog</h1>
+    <h1 className={styles['header']}>Welcome to my blogs</h1>
     <p className={styles['subtitle']}>This is a subtitle idk what to type here</p>
     <ul className={styles['blog-list']}>
       {blogs.map(blog => (
@@ -31,7 +31,7 @@ export async function getStaticProps() {
   const blogs = filesInBlogs.map(filename => {
     const file = fs.readFileSync(`./content/blogs/${filename}`, 'utf8')
 		const matterData = matter(file)
-		
+
     return {
 			...matterData.data, // matterData.data contains front matter
 			slug: filename.slice(0, filename.indexOf('.'))
